@@ -181,6 +181,7 @@ function Form({ setQueries }: FormProps): JSX.Element {
             password: password,
             confirmPassword: confirmPassword,
           }),
+          credentials: 'include',
         });
         console.log(response);
         if (response.ok) {

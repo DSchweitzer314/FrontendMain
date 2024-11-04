@@ -4,6 +4,7 @@ const retreiveUserQueryMap = async () => {
     const response = await fetch(`${backend_gateway}/api/getUserQueries`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
     });
 
     if (!response.ok) {
