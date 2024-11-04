@@ -1,6 +1,7 @@
+const backend_gateway = import.meta.env.VITE_BACKEND_GATEWAY;
 export const handleOpenAiCall = async (userInput: string): Promise<string> => {
   try {
-    const response = await fetch('/api/openAi', {
+    const response = await fetch(`${backend_gateway}/api/openAi`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

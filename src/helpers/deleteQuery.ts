@@ -1,12 +1,12 @@
 import { QueriesType } from './addCategory';
-
+const backend_gateway = import.meta.env.VITE_BACKEND_GATEWAY;
 const deleteQuery = async (
   key: string,
   query: string,
   setQueries: React.Dispatch<React.SetStateAction<QueriesType>>
 ) => {
   try {
-    const response = await fetch('/api/deleteQuery', {
+    const response = await fetch(`${backend_gateway}/api/deleteQuery`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ category: key, query: query }),

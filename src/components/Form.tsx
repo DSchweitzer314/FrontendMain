@@ -13,6 +13,7 @@ const github_clientID = import.meta.env.VITE_GITHUB_CLIENTID;
 const google_clientID = import.meta.env.VITE_GOOGLE_CLIENTID;
 const API_URL = import.meta.env.VITE_API_URL;
 const google_redirect_uri = import.meta.env.VITE_GOOGLE_REDIRECT_URI;
+const backend_gateway = import.meta.env.VITE_BACKEND_GATEWAY;
 export const LogOutGithub = () => {
   localStorage.removeItem('accessToken');
   localStorage.removeItem('githubJwtToken');
@@ -172,7 +173,7 @@ function Form({ setQueries }: FormProps): JSX.Element {
     setIsSigupEmailPwdNotValid(false);
     if (validateEmail(email)) {
       try {
-        const response = await fetch('/api/signup', {
+        const response = await fetch(`${backend_gateway}/api/signup`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -217,7 +218,7 @@ function Form({ setQueries }: FormProps): JSX.Element {
     setSignInEmailIsNotValid(false);
     setIsSignInEmailNotValid(false);
     if (validateEmail(email)) {
-      fetch(`https://oy3mb91jze.execute-api.us-east-1.amazonaws.com/api/signin`, {
+      fetch(`${backend_gateway}/api/signin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email, password: password }),

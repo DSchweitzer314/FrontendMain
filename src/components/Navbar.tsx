@@ -10,6 +10,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { LogOutGithub } from './Form';
 import { clearTokens } from './googleRoute';
 import { useGettingContext } from './AuthContext';
+const backend_gateway = import.meta.env.VITE_BACKEND_GATEWAY;
 interface NavProps {
   isSideBarHovered: boolean;
 }
@@ -150,7 +151,7 @@ const NavBar: React.FC<NavProps> = ({ isSideBarHovered }) => {
                     className='bg-btnPurple me-2 d-flex flex-column justify-content-center'
                     onClick={async () => {
                       handleLogoutClick(loginGateway);
-                      await fetch("/api/logout");
+                      await fetch(`${backend_gateway}/api/logout`);
                     }}
                     
                   >

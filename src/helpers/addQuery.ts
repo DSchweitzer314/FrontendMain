@@ -1,12 +1,12 @@
 import { QueriesType } from './addCategory';
-
+const backend_gateway = import.meta.env.VITE_BACKEND_GATEWAY;
 const addQuery = async (
   category: string,
   newQuery: string,
   setQueries: React.Dispatch<React.SetStateAction<QueriesType>>
 ) => {
   try {
-    const response = await fetch('/api/addQuery', {
+    const response = await fetch(`${backend_gateway}/api/addQuery`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ category: category, query: newQuery }),

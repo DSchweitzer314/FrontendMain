@@ -1,13 +1,13 @@
 export interface QueriesType {
   [key: string]: string[];
 }
-
+const backend_gateway = import.meta.env.VITE_BACKEND_GATEWAY;
 const handleAddCategory = async (
   newCategory: string,
   setQueries: React.Dispatch<React.SetStateAction<QueriesType>>
 ) => {
   try {
-    const response = await fetch('/api/addCategory', {
+    const response = await fetch(`${backend_gateway}/api/addCategory`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ category: newCategory }),

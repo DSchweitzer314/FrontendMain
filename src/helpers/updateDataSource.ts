@@ -1,7 +1,8 @@
+const backend_gateway = import.meta.env.VITE_BACKEND_GATEWAY;
 const updateDataSource = async (newDataSource: string) => {
   console.log('sending this to update data source', newDataSource);
   try {
-    const response = await fetch('/api/dataSource', {
+    const response = await fetch(`${backend_gateway}/api/dataSource`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ dataSource: newDataSource }),

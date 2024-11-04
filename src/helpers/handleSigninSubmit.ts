@@ -1,5 +1,5 @@
 import React from 'react';
-
+const backend_gateway = import.meta.env.VITE_BACKEND_GATEWAY;
 
 
 export const handleSigninSubmit = async (
@@ -9,7 +9,7 @@ export const handleSigninSubmit = async (
 ): Promise<void> => {
   e.preventDefault();
   
-  await fetch('/api/signin', {
+  await fetch(`${backend_gateway}/api/signin`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email: email, password: password }),

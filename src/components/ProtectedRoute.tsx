@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import {useGettingContext, loginTypes} from './AuthContext';
+const backend_gateway = import.meta.env.VITE_BACKEND_GATEWAY;
 const ProtectedRoute: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -20,7 +21,7 @@ const ProtectedRoute: React.FC = () => {
         };
         const validateSession = async () => {
             try {
-                const response = await fetch('/api/sessionUp', {
+                const response = await fetch(`${backend_gateway}/api/sessionUp`, {
                     credentials: 'include',
                 });
                 if(!response.ok) {
@@ -39,7 +40,7 @@ const ProtectedRoute: React.FC = () => {
                 return;
             }
             try {
-                const response = await fetch('/api/githubJwtValidation',  {
+                const response = await fetch(`${backend_gateway}/api/githubJwtValidation`,  {
                     headers: {
                       Authorization:`Bearer ${jwtToken}` 
                     }
@@ -79,7 +80,7 @@ const ProtectedRoute: React.FC = () => {
             }
             try {
                 //usually use post method to refresh jwt token
-                const response = await fetch("/api/githubRefreshJwtToken", {
+                const response = await fetch(`${backend_gateway}/api/githubRefreshJwtToken`, {
                     method:"POST",
                     headers: {
                         'Content-Type': 'application/json',
