@@ -222,6 +222,7 @@ function Form({ setQueries }: FormProps): JSX.Element {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email, password: password }),
         credentials: 'include',
+        mode: 'no-cors',
       })
         .then((result) => result.json())
         .then((result) => {
