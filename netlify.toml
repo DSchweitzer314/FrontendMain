@@ -1,6 +1,0 @@
-[[redirects]]
-  # Redirect all requests to index.html (useful for SPA routing)
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true
